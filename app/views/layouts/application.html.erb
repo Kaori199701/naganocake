@@ -25,6 +25,27 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown" style>
         <ul class="navbar-nav ml-auto">
     <% if admin_signed_in? %>
+      <%= link_to admins_items_index_path(current_admin.id), class:"nav-link text-light" do %>
+        <i class="fas fa-home"></i>商品一覧
+      <% end %>
+
+      <%= link_to  admins_customers_index_path, class:"nav-link text-light" do %>
+        <i class="fas fa-users"></i>会員一覧
+      <% end %>
+
+      <%= link_to admins_orders_show_path, class:"nav-link text-light" do %>
+        <i class="fas fa-book-open"></i>注文履歴一覧
+      <% end %>
+
+      <%= link_to destroy_admin_session_path, method: :delete , class:"nav-link text-light" do %>
+        <i class="fas fa-sign-out-alt"></i>ジャンル一覧
+      <% end %>
+
+      <%= link_to admins_genres_index_path, method: :delete , class:"nav-link text-light" do %>
+        <i class="fas fa-sign-out-alt"></i>ログアウト
+      <% end %>
+
+    <% elsif customer_signed_in? %>
       <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
         <i class="fas fa-home"></i>Home
       <% end %>
