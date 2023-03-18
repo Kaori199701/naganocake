@@ -17,12 +17,13 @@ Rails.application.routes.draw do
     # get 'genres/edit'
     # patch 'genres/:id' => 'genres#update', as: 'update_genre'
 
-    get 'items/index'
-    get 'items/new'
-    post 'items' => 'items#create'
-    get 'items/show'
-    get 'items/edit'
-    patch 'items/:id' => 'items#update', as: 'update_item'
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    # get 'items/index'
+    # get 'items/new'
+    # post 'items' => 'items#create'
+    # get 'items/show'
+    # get 'items/edit'
+    # patch 'items/:id' => 'items#update', as: 'update_item'
 
     get 'homes/top'
   end

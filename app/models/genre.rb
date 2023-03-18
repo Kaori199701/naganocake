@@ -1,6 +1,8 @@
 class Genre < ApplicationRecord
 
-  has_many :items
+  has_many :item_genre_relations
+  has_many :items, through: :item_genre_relations
+
   validates :genres_name, presence:true
 
 end

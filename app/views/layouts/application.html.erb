@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown" style>
         <ul class="navbar-nav ml-auto">
     <% if admin_signed_in? %>
-      <%= link_to admins_items_index_path(current_admin.id), class:"nav-link text-light" do %>
+      <%= link_to admins_items_path(current_admin.id), class:"nav-link text-light" do %>
         <i class="fas fa-home"></i>商品一覧
       <% end %>
 

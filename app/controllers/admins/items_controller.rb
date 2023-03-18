@@ -8,10 +8,8 @@ class Admins::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # 3. データをデータベースに保存するためのsaveメソッド実行
     @item.save
-    # 4. トップ画面へリダイレクト
-    redirect_to 'admins/items/index'
+    redirect_to admins_items_path
   end
 
   def show
@@ -26,7 +24,7 @@ class Admins::ItemsController < ApplicationController
 private
 
   def item_params
-    params.require(:item).permit(:item_name, :image, :item_introduction, :price)
+    params.require(:item).permit(:item_name, :image, :item_introduction, :price, genre_ids: [])
   end
 
 end

@@ -3,7 +3,7 @@
 <h1>商品新規登録</h1>
 
 <!-- form_with部分 -->
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, url: admins_items_path do |f| %>
   <h4>商品画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
 
@@ -14,17 +14,25 @@
   <%= f.text_area :item_introduction %>
 
   <h4>ジャンル</h4>
-  <div class="field">
-   <%= form.label :genre %>
-   <%= form.collection_select :genre_id, @genres, :id, :name, {include_blank: "---"} %>
-  </div>
+  <p>
+    <%= f.label :genre, 'ジャンル' %>
+    <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genres_name) do |genre| %>
+      <%= genre.label do %>
+        <%= genre.check_box %>
+        <%= genre.text %>
+      <% end %>
+    <% end %>
+  </p>
 
 
   <h4>税抜価格</h4>
   <%= f.text_field :price %> 円
 
-  <h4>販売ステータス　<選択></h4>
-
+  <h4>販売ステータス</h4>
+  <%= f.radio_button :is_active, "販売中",checked: true %>
+  <%= f.label :is_active, "販売中", {value: :true, style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, :false %>
+  <%= f.label :is_active, "販売停止中", {value: :false, style: "display: inline-block;"} %>
 
   <%= f.submit '新規登録' %>
 <% end %>
