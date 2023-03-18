@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'customers/edit'
 
     get 'genres/index'
+    post 'genres' => 'genres#create'
     get 'genres/edit'
 
     get 'items/index'
