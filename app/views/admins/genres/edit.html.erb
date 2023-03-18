@@ -1,2 +1,15 @@
 <h1>ジャンル編集</h1>
-<p>ジャンル名　□　編集を保存</p>
+
+<%= form_with model: @genre, url: admins_genre_path(@genre), method: :patch do |f| %>
+
+  <div class="form-group">
+    <label for="genre_name">ジャンル名</label>
+    <br>
+    <%= f.text_field :genres_name %>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" name="commit" value="変更を保存" class="btn btn-success" data-disable-with="Update Genre">
+  </div>
+
+<% end %>

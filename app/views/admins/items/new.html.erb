@@ -14,6 +14,10 @@
   <%= f.text_area :item_introduction %>
 
   <h4>ジャンル</h4>
+  <div class="field">
+   <%= form.label :genre %>
+   <%= form.collection_select :genre_id, @genres, :id, :name, {include_blank: "---"} %>
+  </div>
 
 
   <h4>税抜価格</h4>

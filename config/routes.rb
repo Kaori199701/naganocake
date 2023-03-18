@@ -11,9 +11,11 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
 
-    get 'genres/index'
-    post 'genres' => 'genres#create'
-    get 'genres/edit'
+    resources :genres, only: [:index, :create, :edit, :update]
+    # get 'genres/index'
+    # post 'genres' => 'genres#create'
+    # get 'genres/edit'
+    # patch 'genres/:id' => 'genres#update', as: 'update_genre'
 
     get 'items/index'
     get 'items/new'

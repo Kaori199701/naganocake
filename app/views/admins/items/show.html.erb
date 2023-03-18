@@ -1,10 +1,22 @@
 <h1>商品詳細</h1>
 
+<%= form_with model: @item do |f| %>
 <p>画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+
 <p>商品名</p>
+  <%= f.text_field :item_name %>
+
 <p>商品説明</p>
+  <%= f.text_area :item_introduction %>
+
 <p>ジャンル</p>
+
+
 <p>税込価格(税抜価格)　　　円</p> <%# 登録は税抜のみなので、数式を入れて税込が表示させるようにする %>
+
 <p>販売ステータス　<表示></p>
+
+<% end %>
 
 <p>編集する</p>

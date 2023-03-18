@@ -9,15 +9,15 @@
 <% end %>
 
 <p>ジャンル</p>
- <% @genres.each do |genre| %>
+
   <table class="table">
       <tboby>
+      <% @genres.each do |genre| %>
         <tr>
          <th>ジャンル名</th>
          <th><%= genre.genres_name %></th>
+         <th><%= link_to "Edit", edit_admins_genre_path(genre.id) %></th>
         </tr>
+      <% end %>
       </tbody>
   </table>
- <% end %>
-
-<p>ジャンルごとの編集ボタン</p>
