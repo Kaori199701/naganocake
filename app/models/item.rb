@@ -1,7 +1,10 @@
 class Item < ApplicationRecord
 
-  has_many :item_genre_relations
-  has_many :genres, through: :item_genre_relations
+  # has_many :item_genre_relations
+  # has_many :genres, through: :item_genre_relations
+  belongs_to :genre
+
+  has_one_attached :image
 
   validates :is_active, inclusion: { in: [true, false] }
 

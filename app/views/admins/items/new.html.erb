@@ -14,16 +14,7 @@
   <%= f.text_area :item_introduction %>
 
   <h4>ジャンル</h4>
-  <p>
-    <%= f.label :genre, 'ジャンル' %>
-    <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genres_name) do |genre| %>
-      <%= genre.label do %>
-        <%= genre.check_box %>
-        <%= genre.text %>
-      <% end %>
-    <% end %>
-  </p>
-
+  <%= f.collection_select :genre_id, Genre.all, :id, :genres_name %>
 
   <h4>税抜価格</h4>
   <%= f.text_field :price %> 円
