@@ -1,6 +1,4 @@
 class Admins::ItemsController < ApplicationController
-  def index
-  end
 
   def new
     @item = Item.new
@@ -10,6 +8,10 @@ class Admins::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.save
     redirect_to admins_items_path
+  end
+
+  def index
+    @items = Item.all
   end
 
   def show
