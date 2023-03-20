@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     # post 'items' => 'items#create'
     # get 'items/show'
     # get 'items/edit'
-    # patch 'items/:id' => 'items#update', as: 'update_item'
+    patch 'items/:id' => 'items#update', as: 'update_item'
 
     get 'homes/top'
   end
