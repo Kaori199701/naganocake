@@ -7,7 +7,7 @@
 <%= item.id %>
 
 <p>商品名</p>
-<%= item.item_name %>
+<%= link_to item.item_name, admins_item_path(item.id) %>
 
 <p>税抜価格</p>
 <%= item.price %>
@@ -15,7 +15,11 @@
 <p>ジャンル</p>
 
 <p>ステータス</p>
-<%= item.is_active %>
+<% if item.is_active %>
+    販売中
+<% elsif %>
+    販売停止中
+<% end %>
 
 </div>
 <% end %>
