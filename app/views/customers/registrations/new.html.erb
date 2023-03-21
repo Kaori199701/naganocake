@@ -58,6 +58,8 @@
 
 
 <h2>既に登録済みの方</h2>
-  <div class="actions">
-    <%= render "customers/shared/links" %>　からログインしてください。
-  </div>
+
+<%= link_to  new_customer_session_path, class:"nav-link text-light" do %>
+  こちら
+<% end %>
+からログインしてください。
