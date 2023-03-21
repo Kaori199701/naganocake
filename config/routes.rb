@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
+
   namespace :customers do
     get 'homes/top'
   end
 
+  namespace :publics do
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
 
   namespace :admins do
     get 'orders/show'
 
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers, only: [:index, :show, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
     # get 'genres/index'

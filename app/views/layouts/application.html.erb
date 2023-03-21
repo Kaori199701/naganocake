@@ -43,20 +43,20 @@
       <% end %>
 
     <% elsif customer_signed_in? %>
-      <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
-        <i class="fas fa-home"></i>Home
+      <%= link_to publics_customer_path(current_customer.id), class:"nav-link text-light" do %>
+        <i class="fas fa-home"></i>マイページ
       <% end %>
 
-      <%= link_to users_path, class:"nav-link text-light" do %>
-        <i class="fas fa-users"></i>Users
+      <%= link_to publics_items_path, class:"nav-link text-light" do %>
+        <i class="fas fa-users"></i>商品一覧
       <% end %>
 
-      <%= link_to books_path, class:"nav-link text-light" do %>
-        <i class="fas fa-book-open"></i>Books
+      <%= link_to publics_cart_items_path, class:"nav-link text-light" do %>
+        <i class="fas fa-book-open"></i>カート
       <% end %>
 
-      <%= link_to destroy_user_session_path, method: :delete , class:"nav-link text-light" do %>
-        <i class="fas fa-sign-out-alt"></i>Log out
+      <%= link_to destroy_customer_session_path, method: :delete , class:"nav-link text-light" do %>
+        <i class="fas fa-sign-out-alt"></i>ログアウト
       <% end %>
 
     <% else %>
