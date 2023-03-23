@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   namespace :publics do
+    devise_for :customers
     resources :items, only: [:index, :show]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
