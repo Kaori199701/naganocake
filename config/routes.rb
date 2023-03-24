@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  namespace :customers do
-    get 'homes/top'
-  end
-
   namespace :publics do
     devise_for :customers
     resources :items, only: [:index, :show]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update ,:unsubscribe , :withdrawal]
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    patch 'customers/:id' => 'customers#update', as: 'update_customer'
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
