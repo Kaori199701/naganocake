@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "publics/registrations",
+    sessions: "publics/sessions"
+  }
+
   namespace :publics do
-    devise_for :customers
     resources :items, only: [:index, :show]
-    resources :customers, only: [:index, :show, :edit, :update ,:unsubscribe , :withdrawal]
-    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    resources :customers, only: [:index, :show, :edit, :update]
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    patch 'customers/:id' => 'customers#update', as: 'update_customer'
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
@@ -48,9 +51,6 @@ Rails.application.routes.draw do
   #  passwords: "admins/passwords",
   #  confirmations: "admins/confirmations"
   # }
-
-
-  devise_for :customers
 
 
   # , controllers: {
