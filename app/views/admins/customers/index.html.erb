@@ -7,7 +7,7 @@
 <%= customer.id %>
 
 <p>氏名</p>
-<%= customer.last_name %><%= customer.first_name %>
+<%= link_to customer.last_name, admins_customer_path(customer.id) %><%= link_to customer.first_name, admins_customer_path(customer.id) %>
 
 <p>メールアドレス</p>
 <%= customer.email %>
