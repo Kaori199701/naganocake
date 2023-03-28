@@ -1,5 +1,5 @@
 <h1>会員一覧</h1>
-<p>会員ID　氏名　メールアドレス　ステータス</p>
+
 
 <% @customers.each do |customer| %>
 
@@ -13,8 +13,10 @@
 <%= customer.email %>
 
 <p>ステータス</p>
-
-
+<% if customer.is_deleted %>
+    退会
+<% elsif %>
+    有効
 <% end %>
 
-<p>1 2 3 >></p>
+<% end %>
