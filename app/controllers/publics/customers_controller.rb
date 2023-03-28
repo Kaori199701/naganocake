@@ -3,7 +3,6 @@ class Publics::CustomersController < ApplicationController
   end
 
   def show
-    @customers = Customer.all
     @customer = Customer.find(params[:id])
   end
 
@@ -14,7 +13,7 @@ class Publics::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-       flash[:notice] = "You have created book successfully."
+       flash[:notice] = "You have created customer successfully."
        redirect_to publics_customer_path(@customer.id)
     else
       render 'edit'
