@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :orders, only: [:index, :show]
     resources :customers, only: [:index, :show, :edit, :update]
+    patch 'customers/:id' => 'customers#update', as: 'update_customer'
     resources :genres, only: [:index, :create, :edit, :update]
     # get 'genres/index'
     # post 'genres' => 'genres#create'
