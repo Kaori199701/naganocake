@@ -16,16 +16,13 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    get 'orders/show'
-
+    resources :orders, only: [:index, :show]
     resources :customers, only: [:index, :show, :edit, :update]
-
     resources :genres, only: [:index, :create, :edit, :update]
     # get 'genres/index'
     # post 'genres' => 'genres#create'
     # get 'genres/edit'
     # patch 'genres/:id' => 'genres#update', as: 'update_genre'
-
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     # get 'items/index'
     # get 'items/new'
