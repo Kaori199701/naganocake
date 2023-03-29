@@ -12,32 +12,20 @@
 <p>宛名</p>
   <%= f.text_field :name %>
 
-
   <%= f.submit '新規登録' %>
 <% end %>
 
 
-<p>郵便番号</p>
-
-<p>住所</p>
-
-<p>宛先</p>
-
-<p>編集する</p>
-<p>削除する</p>
-
-  <table class="table">
-      <tboby>
-      <% @addresses.each do |address| %>
-        <tr>
-         <th>郵便番号</th>
-         <th><%= address.postal_code %></th>
-         <th>住所</th>
-         <th><%= address.address %></th>
-         <th>宛先</th>
-         <th><%= address.name %></th>
-         <th><%= link_to "編集する", edit_publics_address_path(address.id) %></th>
-         <th><%= link_to "削除する", publics_address_path(address.id), method: :delete, class:"btn btn-sm btn-danger" %></th>
+<% @addresses.each do |address| %>
+   <%= address.customer.id %>
+      <p>郵便番号</p>
+        <%= address.postal_code %>
+      <p>住所</p>
+        <%= address.address %>
+      <p>宛先</p>
+        <%= address.name %>
+      <p><%= link_to "編集する", edit_publics_address_path(address.id) %></p>
+      <p><%= link_to "削除する", publics_address_path(address.id), method: :delete, class:"btn btn-sm btn-danger" %></p>
         </tr>
       <% end %>
       </tbody>
