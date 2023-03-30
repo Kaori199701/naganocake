@@ -4,6 +4,10 @@ class Item < ApplicationRecord
   # has_many :genres, through: :item_genre_relations
   belongs_to :genre
 
+  has_many :cart_items
+  validates :price, presence: true
+
+
   has_one_attached :image
 
   def add_tax_price

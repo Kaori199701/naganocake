@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :publics do
+    get 'homes/top'
+  end
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "publics/registrations",
     sessions: "publics/sessions"
@@ -10,7 +13,11 @@ Rails.application.routes.draw do
      get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     resources :customers, only: [:index, :show, :edit, :update]
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create]do
+       collection do
+         delete "destroy_all"   #パスが　all_destroy_cart_items_path, method: :delete　となる
+       end
+     end
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end

@@ -1,2 +1,15 @@
-<h1>Customers::Homes#top</h1>
-<p>Find me in app/views/customers/homes/top.html.erb</p>
+使わない？
+
+<h1>新着商品</h1>
+
+<% @items.each do |item| %>
+<div>
+
+<%= image_tag item.get_image %>
+
+<%= link_to item.item_name, publics_item_path(item.id) %>
+
+<%= item.price %>
+
+</div>
+<% end %>
