@@ -28,14 +28,21 @@ class Publics::CartItemsController < ApplicationController
       end
   end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+       flash[:notice] = "You have created address successfully."
+       redirect_to publics_cart_items_path
+    else
+      render 'index'
+    end
+  end
+
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
     render 'index'
-  end
-
-  def update
   end
 
   def destroy_all

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
          delete "destroy_all"   #パスが　all_destroy_cart_items_path, method: :delete　となる
        end
      end
+    patch '/customers/:id' => 'customers#update', as: 'update_cart_item'
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
