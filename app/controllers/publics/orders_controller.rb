@@ -12,11 +12,13 @@ class Publics::OrdersController < ApplicationController
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
         order_detail = OrderDetail.new(order_id: @order.id)
-        order_detail.price = cart_item.item.price
+        order_detail.purchase_price = (cart_item.item.price*1.08).floor
         order_detail.amount = cart_item.amount
         order_detail.item_id = cart_item.item_id
+
         order_detail.save!
       end
+
       @cart_items.destroy_all
       redirect_to publics_orders_complete_path
     else
@@ -29,7 +31,7 @@ class Publics::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.payment_method = params[:order][:payment_method]
-    # @total_price = current_customer.cart_items.cart_items_total_amount(@cart_items)
+    #@total_price = current_customer.cart_items.cart_items_total_amount(@cart_items)
     @order.shipping_cost = 800
 
     if params[:order][:address_option] == "0"
@@ -66,7 +68,7 @@ class Publics::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
     @order_details = @order.order_details.all
   end
 

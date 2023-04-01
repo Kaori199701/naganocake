@@ -22,9 +22,9 @@ Rails.application.routes.draw do
        end
      end
     patch '/customers/:id' => 'customers#update', as: 'update_cart_item'
-    resources :orders, only: [:new, :create, :index, :show]
     post '/orders/confirm'
     get '/orders/complete'
+    resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
