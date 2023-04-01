@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'order_details/update'
+  end
   namespace :publics do
     get 'homes/top'
   end
@@ -19,7 +22,9 @@ Rails.application.routes.draw do
        end
      end
     patch '/customers/:id' => 'customers#update', as: 'update_cart_item'
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show]
+    post '/orders/confirm'
+    get '/orders/complete'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
