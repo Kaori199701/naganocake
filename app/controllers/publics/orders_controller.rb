@@ -9,16 +9,16 @@ class Publics::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     if @order.save!
-      @cart_products = current_customer.cart_products
-      @cart_products.each do |cart_product|
+      @cart_items = current_customer.cart_items
+      @cart_items.each do |cart_item|
         order_detail = OrderDetail.new(order_id: @order.id)
-        order_detail.price = cart_product.product.price
-        order_detail.amount = cart_product.amount
-        order_detail.product_id = cart_product.product_id
+        order_detail.price = cart_item.item.price
+        order_detail.amount = cart_item.amount
+        order_detail.item_id = cart_item.item_id
         order_detail.save!
       end
-      @cart_products.destroy_all
-      redirect_to orders_thanks_path
+      @cart_items.destroy_all
+      redirect_to publics_orders_complete_path
     else
       render "new"
     end
@@ -28,8 +28,8 @@ class Publics::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.payment = params[:order][:payment]
-    @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
+    @order.payment_method = params[:order][:payment_method]
+    # @total_price = current_customer.cart_items.cart_items_total_amount(@cart_items)
     @order.shipping_cost = 800
 
     if params[:order][:address_option] == "0"
@@ -44,15 +44,15 @@ class Publics::OrdersController < ApplicationController
       @order.name = @address.name
       render 'confirm'
     elsif params[:order][:address_option] == "2"
-      @ship_city = current_customer.ship_cities.new
-      @ship_city.city = params[:order][:city]
-      @ship_city.name = params[:order][:name]
-      @ship_city.postcode = params[:order][:postcode]
-      @ship_city.customer_id = current_customer.id
-      if @ship_city.save
-      @order.postcode = @ship_city.postcode
-      @order.name = @ship_city.name
-      @order.city = @ship_city.city
+      @address = current_customer.addresses.new
+      @address.address = params[:order][:address]
+      @address.name = params[:order][:name]
+      @address.postal_code = params[:order][:postal_code]
+      @address.customer_id = current_customer.id
+      if @address.save
+      @order.postal_code = @address.postal_code
+      @order.name = @address.name
+      @order.address = @address.address
       else
        render 'new'
       end
