@@ -7,7 +7,7 @@
           <tbody>
             <tr>
                 <td class="active">注文日</td>
-                <td><%= @order.created_at.to_s(:datetime_jp) %></td>
+                <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
             </tr>
             <tr>
                 <td class="active">配送先</td>
@@ -22,7 +22,7 @@
                 <td><%= @order.payment_method %></td>
             </tr>
             <tr>
-                <td class="active">ステータス</td>
+                <td class="active">注文ステータス</td>
                 <td><%= @order.status %></td>
             </tr>
           </tbody>
@@ -34,15 +34,15 @@
           <tbody>
             <tr>
                 <td class="active">商品合計</td>
-                <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
+                <td>¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
             </tr>
             <tr>
               <td class="active">配送料</td>
-              <td><%= @order.shipping_cost %></td>
+              <td>¥<%= @order.shipping_cost %></td>
             </tr>
             <tr>
               <td class="active"><b>ご請求額</b></td>
-              <td><%= "#{@order.total_payment.to_s(:delimited)}"%></td>5
+              <td>¥<%= "#{@order.total_payment.to_s(:delimited)}"%></td>
             </tr>
           </tbody>
         </table>
@@ -63,9 +63,9 @@
         <% @order_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.item_name %></td>
-            <td><%= (order_detail.purchase_price * 1.1).floor.to_s(:delimited) %></td>
+            <td>¥<%= (order_detail.purchase_price * 1.1).floor.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= (order_detail.purchase_price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
+            <td>¥<%= (order_detail.purchase_price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
           </tr>
         <% end %>
       </tbody>
