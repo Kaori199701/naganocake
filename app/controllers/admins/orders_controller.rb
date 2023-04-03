@@ -3,5 +3,7 @@ class Admins::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.all.find(params[:id])
+    @order_details = @order.order_details.all
   end
 end
