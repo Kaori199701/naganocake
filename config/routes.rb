@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :orders, only: [:index, :show]
+    patch 'orderrs/:id' => 'orders#update', as: 'update_order'
+    resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
     patch 'customers/:id' => 'customers#update', as: 'update_customer'
     resources :genres, only: [:index, :create, :edit, :update]
