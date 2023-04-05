@@ -42,6 +42,11 @@
         <i class="fas fa-sign-out-alt"></i>ログアウト
       <% end %>
 
+      <%= form_with local: true, method: :get do |form| %>
+        <%= form.text_field :keyword %>
+        <%= form.submit '検索' %>
+      <% end %>
+
     <% elsif customer_signed_in? %>
       <%= link_to publics_customer_path(current_customer.id), class:"nav-link text-light" do %>
         <i class="fas fa-home"></i>マイページ
@@ -57,6 +62,11 @@
 
       <%= link_to destroy_customer_session_path, method: :delete , class:"nav-link text-light" do %>
         <i class="fas fa-sign-out-alt"></i>ログアウト
+      <% end %>
+
+      <%= form_with local: true, method: :get do |form| %>
+        <%= form.text_field :keyword %>
+        <%= form.submit '検索' %>
       <% end %>
 
     <% else %>
@@ -79,6 +89,12 @@
       <%= link_to new_customer_session_path, class:"nav-link text-light" do %>
         <i class="fas fa-sign-in-alt"></i>ログイン
       <% end %>
+
+      <%= form_with local: true, method: :get do |form| %>
+        <%= form.text_field :keyword %>
+        <%= form.submit '検索' %>
+      <% end %>
+
     <% end %>
       </nl>
     </div>
