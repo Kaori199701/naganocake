@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
+    get 'homes/top'
+
     resources :orders, only: [:index, :show, :update]
     patch 'orderrs/:id' => 'orders#update', as: 'update_order'
     resources :order_details, only: [:update]
@@ -46,8 +48,6 @@ Rails.application.routes.draw do
     # get 'items/show'
     # get 'items/edit'
     patch 'items/:id' => 'items#update', as: 'update_item'
-
-    get 'homes/top'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

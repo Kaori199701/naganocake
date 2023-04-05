@@ -2,7 +2,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    admins_homes_top_path(resource)
+     case resource
+     when Admin
+        admins_homes_top_path
+     when Customer
+        root_path
+     end
   end
 
 
