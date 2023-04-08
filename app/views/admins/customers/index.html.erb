@@ -1,22 +1,39 @@
-<h1>会員一覧</h1>
+<main>
+<div class="container">
 
+  <div class="display-2 ml-5 mt-4 pb-3">
+    <h3>会員一覧</h3>
+  </div>
 
-<% @customers.each do |customer| %>
+  <div class="row">
+  <table class="order-table table mb-5">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
 
-<p>会員ID</p>
-<%= customer.id %>
+      <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <td style="width: 10%"><%= customer.id %></td>
+          <td><%= link_to customer.last_name, admins_customer_path(customer.id) %><%= link_to customer.first_name, admins_customer_path(customer.id) %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_deleted %>
+                退会
+            <% elsif %>
+                <div class="text-success">有効</div>
+            <% end %>
+       <% end %>
+          </td>
+        </tr>
+      </tbody>
+  </table>
 
-<p>氏名</p>
-<%= link_to customer.last_name, admins_customer_path(customer.id) %><%= link_to customer.first_name, admins_customer_path(customer.id) %>
-
-<p>メールアドレス</p>
-<%= customer.email %>
-
-<p>ステータス</p>
-<% if customer.is_deleted %>
-    退会
-<% elsif %>
-    有効
-<% end %>
-
-<% end %>
+  </div>
+</div>
+</main>

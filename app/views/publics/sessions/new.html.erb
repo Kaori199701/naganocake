@@ -1,33 +1,51 @@
-<h2>ログイン</h2>
+<div class="container">
+  <div class="row">
 
-<h3>会員の方はこちらからログイン</h3>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="display-2 mt-3 pb-3">
+      <h3>ログイン</h3>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+      <div class="row">
+        <div class="col-md-12 pb-3">
+          <h4>会員の方はこちらからログイン</h4>
+        </div>
+
+        <div class="col-md-12 ml-5 pb-3">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"30" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :パスワード %>
+              <%= f.password_field :password, autocomplete: "current-password", :size=>"30" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+
+              <div class="actions">
+                <input type="submit" name="commit" value="ログイン" class="btn btn-sm btn-primary" data-disable-with="Log in">
+              </div>
+          <% end %>
+        </div>
+
+        <div class="col-md-12 mt-3 pb-3">
+          <h4>会員登録がお済みでない方</h4>
+        </div>
+
+        <div class="col-md-12 ml-5 pb-3">
+          <%= link_to  new_customer_registration_path, class:"nav-link text-primary" do %>
+            こちら
+          <% end %>
+
+          から新規登録を行ってください。
+        </div>
+      </div>
   </div>
-<% end %>
-
-<h3>会員登録がお済みでない方</h3>
-<%= link_to  new_customer_registration_path, class:"nav-link text-light" do %>
-  こちら
-<% end %>
-
-から新規登録を行ってください。
+</div>

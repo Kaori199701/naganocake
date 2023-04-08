@@ -1,32 +1,57 @@
-<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
+<main>
+<div class="container">
 
-<p>会員ID</p>
-<%= @customer.id %>
+  <div class="display-2 ml-5 mt-4 pb-3">
+    <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+  </div>
 
-<p>氏名</p>
-<%= @customer.last_name %><%= @customer.first_name %>
+  <div class="row">
+  <table class="order-table table mb-5">
+      <tbody>
+        <tr>
+          <th style="width: 20%">会員ID</th>
+          <td ><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <% if @customer.is_deleted %>
+                 退会
+            <% elsif %>
+                 <div class="text-success">有効</div>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+  </table>
 
-<p>フリガナ</p>
-<%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+<p class="mx-5"><%= link_to "編集する", edit_admins_customer_path(@customer.id), class:"btn btn-sm btn-success" %></p>
+<p class="mx-5"><%= link_to "注文履歴一覧を見る", admins_orders_path, class:"btn btn-sm btn-primary" %></p>
 
-<p>郵便番号</p>
-<%= @customer.postal_code %>
-
-<p>住所</p>
-<%= @customer.address %>
-
-<p>電話番号</p>
-<%= @customer.telephone_number %>
-
-<p>メールアドレス</p>
-<%= @customer.email %>
-
-<p>会員ステータス</p>
-<% if @customer.is_deleted %>
-    退会
-<% elsif %>
-    有効
-<% end %>
-
-<p><%= link_to "編集する", edit_admins_customer_path(@customer.id), class:"btn btn-sm btn-success" %></p>
-<p><%= link_to "注文履歴一覧を見る", admins_orders_path, class:"nav-link text-light" %></p>
+  </div>
+</div>
+</main>

@@ -1,4 +1,9 @@
-<h1>会員情報編集</h1>
+<main>
+<div class="container">
+
+  <div class="display-2 ml-5 mt-4 pb-3">
+    <h3>会員情報編集</h3>
+  </div>
 
 <%= form_with model: @customer, url: publics_customer_path(@customer.id), method: :patch do |f| %>
 
@@ -30,3 +35,6 @@
   <%= link_to "退会する", publics_unsubscribe_path(@customer.id), class:"btn btn-sm btn-success" %>
 
 <% end %>
+
+</div>
+</main>

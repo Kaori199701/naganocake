@@ -23,23 +23,23 @@
         <ul class="navbar-nav ml-auto">
     <% if admin_signed_in? %>
       <%= link_to admins_items_path(current_admin.id), class:"nav-link text-light" do %>
-        <i class="fas fa-home"></i>商品一覧
+        商品一覧
       <% end %>
 
       <%= link_to  admins_customers_path, class:"nav-link text-light" do %>
-        <i class="fas fa-users"></i>会員一覧
+        会員一覧
       <% end %>
 
       <%= link_to admins_homes_top_path, class:"nav-link text-light" do %>
-        <i class="fas fa-book-open"></i>注文履歴一覧
+        注文履歴一覧
       <% end %>
 
       <%= link_to admins_genres_path, class:"nav-link text-light" do %>
-        <i class="fas fa-sign-out-alt"></i>ジャンル一覧
+        ジャンル一覧
       <% end %>
 
       <%= link_to destroy_admin_session_path, method: :delete , class:"nav-link text-light" do %>
-        <i class="fas fa-sign-out-alt"></i>ログアウト
+        ログアウト
       <% end %>
 
       <%= form_with local: true, method: :get do |form| %>
@@ -48,20 +48,24 @@
       <% end %>
 
     <% elsif customer_signed_in? %>
+      <div class="text-light">
+      ようこそ、<%= current_customer.last_name %>さん！
+      </div>
+
       <%= link_to publics_customer_path(current_customer.id), class:"nav-link text-light" do %>
-        <i class="fas fa-home"></i>マイページ
+        マイページ
       <% end %>
 
       <%= link_to publics_items_path, class:"nav-link text-light" do %>
-        <i class="fas fa-users"></i>商品一覧
+        商品一覧
       <% end %>
 
       <%= link_to publics_cart_items_path, class:"nav-link text-light" do %>
-        <i class="fas fa-book-open"></i>カート
+        カート
       <% end %>
 
       <%= link_to destroy_customer_session_path, method: :delete , class:"nav-link text-light" do %>
-        <i class="fas fa-sign-out-alt"></i>ログアウト
+        ログアウト
       <% end %>
 
       <%= form_with local: true, method: :get do |form| %>
@@ -71,23 +75,23 @@
 
     <% else %>
       <%= link_to '/', class:"nav-link text-light" do %>
-        <i class="fas fa-home"></i>Home
+        Home
       <% end %>
 
       <%= link_to '/homes/about', class:"nav-link text-light" do %>
-        <i class="fas fa-link"></i>About
+        About
       <% end %>
 
       <%= link_to publics_items_path, class:"nav-link text-light" do %>
-        <i class="fas fa-users"></i>商品一覧
+        商品一覧
       <% end %>
 
       <%= link_to new_customer_registration_path, class:"nav-link text-light" do %>
-        <i class="fas fa-user-plus"></i>新規登録
+        新規登録
       <% end %>
 
       <%= link_to new_customer_session_path, class:"nav-link text-light" do %>
-        <i class="fas fa-sign-in-alt"></i>ログイン
+        ログイン
       <% end %>
 
       <%= form_with local: true, method: :get do |form| %>
@@ -103,9 +107,10 @@
     </header>
     <%= yield %>
 
+    <main>
+    </main>
 
-
-    <footer>
+    <footer class="footer">
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
        <div class="container mt-5">

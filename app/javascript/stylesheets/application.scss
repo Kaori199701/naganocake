@@ -1,1 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
+
+.footer {
+  margin-top: auto;
+}
+
+.customers_items-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.items-list-each {
+  margin: 10px;
+}

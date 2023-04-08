@@ -1,4 +1,9 @@
-<h1>マイページ</h1>
+<main>
+<div class="container">
+
+  <div class="display-2 ml-5 mt-4 pb-3">
+    <h3>マイページ</h3>
+  </div>
 
 <h3>登録情報</h3>
 <%= link_to "編集する", edit_publics_customer_path(@customer.id), class:"btn btn-sm btn-success" %>
@@ -26,3 +31,6 @@
 <h3>配送先</h3><%= link_to "一覧を見る", publics_addresses_path(@customer.id), class:"btn btn-sm btn-success" %>
 
 <h3>注文履歴</h3><%= link_to "一覧を見る", publics_orders_path(@customer.id), class:"btn btn-sm btn-success" %>
+
+</div>
+</main>

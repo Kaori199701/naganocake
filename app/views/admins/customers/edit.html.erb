@@ -1,33 +1,56 @@
-<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
+<main>
+<div class="container">
 
-<p>会員ID</p>
-  <%= @customer.id %>
+  <div class="display-2 ml-5 mt-4 pb-3">
+    <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+  </div>
 
-<%= form_with model: @customer, url: admins_update_customer_path(@customer.id), method: :patch do |f| %>
+   <div class="row">
+    <table class="order-table table mb-5">
+      <tbody>
+        <tr>
+          <th style="width: 20%">会員ID</th>
+          <td ><%= @customer.id %></td>
+        </tr>
+      <%= form_with model: @customer, url: admins_update_customer_path(@customer.id), method: :patch do |f| %>
+        <tr>
+          <th>氏名</th>
+          <td><%= f.text_field :last_name %>　<%= f.text_field :first_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= f.text_field :last_name_kana %>　<%= f.text_field :first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= f.text_field :address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= f.telephone_field :telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.email_field :email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <%= f.radio_button :is_deleted, "false" %>有効
+            <%= f.radio_button :is_deleted, "true" %>退会
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-<p>氏名</p>
-  <%= f.text_field :last_name %>　<%= f.text_field :first_name %>
-
-<p>フリガナ</p>
-  <%= f.text_field :last_name_kana %>　<%= f.text_field :first_name_kana %>
-
-<p>郵便番号</p>
-  <%= f.text_field :postal_code %>
-
-<p>住所</p>
-  <%= f.text_field :address %>
-
-<p>電話番号</p>
-  <%= f.telephone_field :telephone_number %>
-
-<p>メールアドレス</p>
-  <%= f.email_field :email %>
-
-<p>会員ステータス</p>
-  <%= f.radio_button :is_deleted, "false" %>有効
-  <%= f.radio_button :is_deleted, "true" %>退会
-
-<p></p>
-  <%= f.submit "変更を保存" %>
+  <div class="actions mb-5 mx-auto"><%= f.submit "変更を保存", class:"btn btn-sm btn-success" %></div>
 
 <% end %>
+
+  </div>
+</div>
+</main>

@@ -1,51 +1,68 @@
 <main>
-<h4>ショッピングカート</h4>
+<div class="container">
+  <div class="row mt-4 mb-4">
 
-<%= link_to "カートを空にする", destroy_all_publics_cart_items_path, method: :delete,class: "btn btn-danger btn-sm" %>
+    <div class="display">
+      <h3>ショッピングカート</h3>
 
-<table>
-   <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-   </tr>
-     <% total = 0 %>
+      <div class="text-right">
+        <%= link_to "カートを空にする", destroy_all_publics_cart_items_path, method: :delete,class: "btn btn-danger btn-sm" %>
+      </div>
+    </div>
 
- <% if current_customer.cart_items.present? %>
-    <% @cart_items.each do |cart_item| %>
-     <tr>
-       <td>
-         <%= image_tag cart_item.item.get_image %>
-         <%= cart_item.item.item_name %>
-       </td>
-       <td><%= (cart_item.item.price*1.08).to_i %></td>
-       <td>
-         <%= form_with model: cart_item, url: publics_cart_item_path(cart_item), local: true, method: :patch do |f| %>
-           <%= f.number_field :amount, min: 1, max:10, id: "amount_cart"%>
-           <%= f.submit "変更",class: "btn btn-success" %>
-         <% end %>
-       </td>
-       <td>
-         <% subtotal = ((cart_item.item.price*cart_item.amount)*1.08).to_i %>
-         <%= subtotal %>
-       </td>
-       <td>
-         <%= link_to "商品をカートから削除する", publics_cart_item_path(cart_item.id, cart_item), method: :delete,class: "btn btn-danger" %>
-       </td>
-     </tr>
-       <% total += subtotal %>
-    <% end %>
- <% end %>
-   <tr>
-    <th>合計金額</th>
-    <td><%= total %></td>
-   </tr>
+    <table class="order-table table mt-2">
+       <tr>
+        <th style="width: 40%">商品名</th>
+        <th style="width: 15%">単価(税込)</th>
+        <th style="width: 15%">数量</th>
+        <th style="width: 15%">小計</th>
+        <th style="width: 15%"></th>
+       </tr>
+         <% total = 0 %>
 
+     <% if current_customer.cart_items.present? %>
+        <% @cart_items.each do |cart_item| %>
+         <tr>
+           <td>
+             <%= image_tag cart_item.item.get_image, :size =>'100x50' %>
+             <%= cart_item.item.item_name %>
+           </td>
+           <td><%= (cart_item.item.price*1.08).to_i %></td>
+           <td>
+             <%= form_with model: cart_item, url: publics_cart_item_path(cart_item), local: true, method: :patch do |f| %>
+               <%= f.number_field :amount, min: 1, max:10, id: "amount_cart"%>
+               <%= f.submit "変更",class: "btn btn-success" %>
+             <% end %>
+           </td>
+           <td>
+             <% subtotal = ((cart_item.item.price*cart_item.amount)*1.08).to_i %>
+             <%= subtotal %>
+           </td>
+           <td>
+             <%= link_to "削除する", publics_cart_item_path(cart_item.id, cart_item), method: :delete,class: "btn btn-danger" %>
+           </td>
+         </tr>
+           <% total += subtotal %>
+        <% end %>
+     <% end %>
+    </table>
+    <div class="row">
+        <div class="col-lg-6"><%= link_to "買い物を続ける", publics_items_path, class: "btn btn-primary" %></div>
 
-<p><%= link_to "買い物を続ける", publics_items_path %><p/>
+        <div class="col-lg-6">
+          <table>
+            <tr>
+              <th>合計金額</th>
+              <td><strong><%= total %></strong></td>
+            </tr>
+          </table>
+        </div>
 
-<p><%= link_to "情報入力に進む", new_publics_order_path %></p>
+        <div class="mx-auto">
+          <%= link_to "情報入力に進む", new_publics_order_path, class: "btn btn-success" %>
+        </div>
+    </div>
 
+  </div>
+</div>
 </main>
