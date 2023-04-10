@@ -23,7 +23,6 @@ main {
   margin: 10px;
 }
 
-
 // publics/items/index
 .inline-block_items_title{
   display: inline-block;
@@ -39,7 +38,6 @@ main {
   margin: 10px;
 }
 
-
 // publics/items/show
 .items-show_list {
   display: flex;
@@ -47,4 +45,18 @@ main {
 
 .items-show_list_text {
   margin: 30px 0 0 40px;
+}
+
+// publics/cart_items/index
+.inline-block_cart_items_title {
+  display: flex;
+  width: 100%;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.order_details_list {
+ 
 }
