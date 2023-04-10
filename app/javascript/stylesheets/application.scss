@@ -50,13 +50,16 @@ main {
 // publics/cart_items/index
 .inline-block_cart_items_title {
   display: flex;
-  width: 100%;
 }
 
-.text-right {
-  text-align: right;
+
+.thanks_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.order_details_list {
- 
+// publics/customers/show
+.mypage_list {
+  margin: 10px;
 }
