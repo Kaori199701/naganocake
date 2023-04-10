@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @items = Item.page(params[:page])
+    @items = Item.all.limit(4)
+    @genres = Genre.all
   end
 end
