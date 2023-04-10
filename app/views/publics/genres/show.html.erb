@@ -4,20 +4,7 @@
 
     <!-- ジャンル選択のサイドバー -->
     <div class="col-lg-2">
-      <table>
-        <thead>
-          <tr>
-            <th>ジャンル検索</th>
-          </tr>
-        </thead>
-        <% @genres.each do |genre| %>
-        <tbody>
-          <tr>
-            <td><%= link_to genre.genres_name, publics_genre_path(genre.id) %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
+      <%= render 'publics/genre', post_images: @genres %>
     </div>
     <!-- ジャンル選択のサイドバー -->
 
