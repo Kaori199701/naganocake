@@ -1,0 +1,47 @@
+<main>
+<div class="container">
+  <div class="row">
+
+    <!-- ジャンル選択のサイドバー -->
+    <div class="col-lg-2">
+      <table>
+        <thead>
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td><%= link_to genre.genres_name, publics_genre_path(genre.id) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+    <!-- ジャンル選択のサイドバー -->
+
+    <div class="col-lg-10">
+    <div class="item-index">
+    <h3>商品一覧</h3>
+        <table>
+          <tbody>
+            <tr class="item-box">
+              <% @genre.items.each do |item| %>
+                <td class="item">
+                    <%= link_to publics_item_path(item) do %>
+                      <%= image_tag item.get_image, :size =>"190x150" %><br>
+                      <%= item.item_name %><br>
+                      ￥<%= item.price %>
+                    <% end %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    </div>
+
+  </div>
+</div>
+</main>

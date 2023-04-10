@@ -1,7 +1,32 @@
 @import '~bootstrap/scss/bootstrap';
 
+main {
+  margin-top: 20px;
+}
+
 .footer {
   margin-top: auto;
+}
+
+.infomation{
+
+}
+
+.top_items-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.top_items-list-each {
+  margin: 10px;
+}
+
+
+
+
+.inline-block_items_title{
+  display: inline-block;
 }
 
 .customers_items-list {
