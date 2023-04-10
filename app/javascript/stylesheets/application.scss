@@ -8,6 +8,7 @@ main {
   margin-top: auto;
 }
 
+// homes/top
 .infomation{
 
 }
@@ -23,8 +24,7 @@ main {
 }
 
 
-
-
+// publics/items/index
 .inline-block_items_title{
   display: inline-block;
 }
@@ -37,4 +37,14 @@ main {
 
 .items-list-each {
   margin: 10px;
+}
+
+
+// publics/items/show
+.items-show_list {
+  display: flex;
+}
+
+.items-show_list_text {
+  margin: 30px 0 0 40px;
 }

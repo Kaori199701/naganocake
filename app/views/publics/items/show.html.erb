@@ -7,24 +7,23 @@
     </div>
 
     <div class="col-md-10 mt-4 mb-4">
+      <div class="items-show_list">
+        <%= image_tag @item.get_image, :size =>"250x230" %>
+      <div class="items-show_list_text">
+        <h3><strong><%= @item.item_name %></strong></h3>
+        <p><%= @item.item_introduction %></p>
+        <p><strong>￥<%= @item.add_tax_price.to_s(:dalimited) %></strong>(税込)</p>
 
-  <%= image_tag @item.get_image %>
+        <%= form_with(model: @cart_item,url: publics_cart_items_path, method: :post,local: true)do |f| %>
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10],{ include_blank: '個数選択'} %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
 
-<h3><strong><%= @item.item_name %></strong></h3>
-
-<p><%= @item.item_introduction %></p>
-
-<p><strong>￥<%= @item.add_tax_price.to_s(:dalimited) %></strong>(税込)</p>
-
-
-  <%= form_with(model: @cart_item,url: publics_cart_items_path, method: :post,local: true)do |f| %>
-   <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10],{ include_blank: '個数選択'} %>
-   <%= f.hidden_field :item_id, :value => @item.id %>
-   <%= f.submit "カートに入れる" %>
-  <% end %>
-
-(is_activeがNameErrorになる)
-    </div>
+          <u class="new_botton ml-5">
+           <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success" %>
+          </u>
+        <% end %>
+      </div>
+      </div>
   </div>
 </div>
 </main>
