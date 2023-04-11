@@ -1,11 +1,9 @@
 <main>
 <div class="container">
-  <div class="row">
 
-      <div class="display-2 ml-5 mt-4 pb-3">
-        <h3>商品編集</h3>
-      </div>
+  <h3>商品編集</h3>
 
+  <div class="item_edit">
     <%= form_with model: @item, url: admins_update_item_path(@item.id), method: :patch do |f| %>
   <table class="order-table table mb-5">
     <tbody>
@@ -39,10 +37,13 @@
     </tbody>
   </table>
 
-<%= f.submit "変更を保存" %>
-
-<% end %>
+    <div class="text-center">
+      <%= f.submit '変更を保存', class:"btn btn-success" %>
+    </div>
+    
+  <% end %>
+</div>
 
   </div>
-</div>
+
 </main>

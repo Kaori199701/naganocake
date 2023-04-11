@@ -5,7 +5,7 @@
     <h3>マイページ</h3>
   </div>
 
-<h3 class=inline-block_items_title>登録情報　</h3>
+<h4 class=inline-block_items_title>登録情報　</h4>
 <%= link_to "編集する", edit_publics_customer_path(@customer.id), class:"btn btn-sm btn-success" %>
 
 <div class="mypage_list">
@@ -39,10 +39,10 @@
   </table>
 </div>
 
-<h3 class=inline-block_items_title>配送先　　</h3>
+<h4 class=inline-block_items_title>配送先　　</h4>
 <%= link_to "一覧を見る", publics_addresses_path(@customer.id), class:"btn btn-sm btn-primary" %><br>
 
-<h3 class=inline-block_items_title>注文履歴　</h3>
+<h4 class=inline-block_items_title>注文履歴　</h4>
 <%= link_to "一覧を見る", publics_orders_path(@customer.id), class:"btn btn-sm btn-primary" %>
 
 </div>

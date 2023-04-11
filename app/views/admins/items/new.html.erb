@@ -1,11 +1,9 @@
 <main>
 <div class="container">
-  <div class="row">
 
-      <div class="display-2  mt-4 pb-3">
-        <h3>商品新規登録</h3>
-      </div>
+  <h3>商品新規登録</h3>
 
+  <div class="item_edit">
     <%= form_with model: @item, url: admins_items_path do |f| %>
   <table class="order-table table mb-5">
     <tbody>
@@ -44,7 +42,6 @@
 
 
     <% end %>
-
-  </div>
+</div>
 </div>
 </main>
