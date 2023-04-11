@@ -9,6 +9,12 @@ main {
   margin-top: auto;
 }
 
+.text-center {
+  text-align: center;
+  display: flex;
+  justify-content:space-around;
+}
+
 // homes/top
 .sidebar {
   width: 20%;
@@ -73,13 +79,39 @@ main {
   margin: 10px;
 }
 
-
-//admins/items/show
-.text-center {
-  text-align: center;
-}
-
 //admins/items/edit
 .item_edit {
   margin: 30px auto;
+}
+
+//admins/genres/index
+.genre_new_field {
+  margin: 30px;
+}
+
+.genre_list {
+  margin: 0 30px;
+  width: 50%;
+}
+
+//admins/genres/edit
+.genre_edit_field {
+  margin: 30px;
+}
+
+//admins/customers/show
+.customer_details {
+  margin: 30px;
+}
+
+//admins/orders/show
+.order_history_details {
+  margin: 30px 0;
+}
+
+.total_price_list {
+  margin: 0 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

@@ -1,12 +1,10 @@
 <main>
 <div class="container">
 
-  <div class="display-2 ml-5 mt-4 pb-3">
-    <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
-  </div>
+  <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
 
-  <div class="row">
-  <table class="order-table table mb-5">
+  <div class="customer_details">
+    <table class="order-table table mb-5">
       <tbody>
         <tr>
           <th style="width: 20%">会員ID</th>
@@ -47,11 +45,13 @@
           </td>
         </tr>
       </tbody>
-  </table>
-
-<p class="mx-5"><%= link_to "編集する", edit_admins_customer_path(@customer.id), class:"btn btn-sm btn-success" %></p>
-<p class="mx-5"><%= link_to "注文履歴一覧を見る", admins_orders_path, class:"btn btn-sm btn-primary" %></p>
-
+    </table>
   </div>
+
+  <div class="text-center">
+    <%= link_to "編集する", edit_admins_customer_path(@customer.id), class:"btn btn-success" %>
+    <%= link_to "注文履歴一覧を見る", admins_order_path(@customer.id), class:"btn btn-primary" %>
+  </div>
+
 </div>
 </main>
