@@ -13,7 +13,9 @@
           <% @items.each do |item| %>
             <% if item.is_active == true %>
               <div class="items-list-each">
-                <%= image_tag item.get_image, :size =>"190x150" %><br>
+                <%= link_to publics_item_path(item.id) do %>
+                  <%= image_tag item.get_image, :size =>"190x150" %>
+                <% end %><br>
                 <%= link_to item.item_name, publics_item_path(item.id) %><br>
                 ￥<%= item.price %>
               </div>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     sessions: "publics/sessions"
   }
 
+  devise_for :admins
+
   namespace :publics do
     get 'homes/top'
 
@@ -26,12 +28,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    get 'order_details/update'
-
     get 'homes/top'
 
     resources :orders, only: [:index, :show, :update]
-    patch 'orderrs/:id' => 'orders#update', as: 'update_order'
     resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
     patch 'customers/:id' => 'customers#update', as: 'update_customer'
@@ -53,8 +52,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/' => 'homes#top'
   get '/homes/about'
-
-  devise_for :admins
 
 
   # , controllers: {

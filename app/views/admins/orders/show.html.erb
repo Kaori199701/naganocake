@@ -1,4 +1,4 @@
-<main>
+
 <div class="container">
 
   <h3>注文履歴詳細</h3>
@@ -28,12 +28,12 @@
           </tr>
           <tr>
             <td class="active"><strong>注文ステータス</strong></td>
-            <%= form_with model:@order, url: admins_order_path, local: true do |f| %>
             <td>
+            <%= form_with model: @order, url: admins_order_path(@order), method: :patch, local: true do |f| %>
               <%= f.select :status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"] %>
               <%= f.submit "更新", class: 'btn btn-success' %>
-            </td>
             <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -60,11 +60,12 @@
                 <td><%= (order_detail.purchase_price * 1.1).floor.to_s(:delimited) %></td>
                 <td><%= order_detail.amount %></td>
                 <td><%= (order_detail.purchase_price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
-              <%= form_with model: order_detail, url: admins_order_detail_path(order_detail), local: true do |f| %>
-                <td><%= f.select :make_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %></td>
-
-                <td class="actions"><%= f.submit "更新", class:"btn btn-sm btn-success" %></td>
+                <td>
+              <%= form_with model: order_detail, url: admins_order_detail_path(order_detail), method: :patch, local: true do |f| %>
+                <%= f.select :making_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
+                <%= f.submit "更新", class:"btn btn-sm btn-success" %>
               <% end %>
+              </td>
               </tr>
             <% end %>
           </tbody>
@@ -92,4 +93,3 @@
     </div>
 
 </div>
-</main>
